@@ -1,0 +1,19 @@
+name: 공개 발행 가드
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# 이 저장소는 public 이다 — 가드는 배포 파이프의 장식이 아니라 마지막 방어선이다.
+jobs:
+  guard:
+    name: 저작권·질량·표식 검사
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 발행 가드
+        run: bash scripts/check-public-safe.sh
+      # 통과만 보는 검사는 가드가 죽어도 통과한다 — 음성 대조를 함께 돌린다.
+      - name: 가드 음성 대조 (일부러 위반을 심어 죽는지)
+        run: bash scripts/test-guard.sh

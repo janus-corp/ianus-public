@@ -1,0 +1,31 @@
+# ── 이 저장소는 public 이다. 여기 들어간 것은 되돌릴 수 없다 ──────────────────
+# git 이력·GitHub 캐시·포크에 남는다. "지웠다"는 커밋은 노출을 되돌리지 못한다.
+# 그래서 무시 규칙은 "혹시 몰라서"가 아니라 **1차 방어선**이다.
+
+# 저작권 데이터 원천 — 어떤 형태로도 들어오지 않는다
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*.db
+*.sqlite
+*.sql
+*.dump
+
+# 상위 티어 산출물 — 무료판만 공개한다(CLAUDE.md §4 · 접합계약 C4)
+dist-tier/
+**/member/
+**/paid/
+**/consultant/
+
+# 시크릿
+.env
+.env.*
+*.pem
+*.key
+*.p12
+
+# 잡동사니
+.DS_Store
+node_modules/
+*.log

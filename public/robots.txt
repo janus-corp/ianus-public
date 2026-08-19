@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /baechi/
+Sitemap: https://ianuspath.com/sitemap.xml

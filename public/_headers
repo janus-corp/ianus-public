@@ -1,0 +1,14 @@
+# Cloudflare Pages 헤더. 값은 보수적으로 — 공개 표면이라 되돌리기가 비싸다.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# 배치표는 회차마다 갈린다 — 캐시가 길면 갱신이 사용자에게 늦게 닿는다.
+# A4 배포 감지 프로브가 사이드카를 폴링하므로 사이드카는 특히 짧게 잡는다.
+/baechi/*
+  Cache-Control: public, max-age=300, must-revalidate
+
+/baechi/janus-build.json
+  Cache-Control: no-cache

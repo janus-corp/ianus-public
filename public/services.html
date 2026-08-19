@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서비스 — 야누스</title>
+<meta name="description" content="진단 2종, 실행 5종. 배치표·수준진단, 커리큘럼 처방, 질문·답변, 상담·컨설팅, 1:1 과외, 클리닉, 강의.">
+<!--
+  야누스 공개 서비스 소개 (정적) — 정본은 웹앱 /services 의 SERVICES 배열(apps/web/src/pages/ServicesPage.tsx).
+  ⚠ 앱의 서비스 정의가 바뀌면 이 파일도 같이 고쳐야 한다(정본은 앱, 여기는 공개용 사본).
+  검증 안 된 수치(만족도·평균 응답시간)는 의도적으로 제외 — 근거 생기면 그때 넣는다.
+-->
+<style>
+  :root{
+    --surface:#ffffff; --surface2:#f4f7fb;
+    --ink:#1e3550; --ink2:#52627a; --ink3:#8695a8;
+    --hair:#e4eaf1; --hair2:#eef2f7;
+    --blue:#2f6fb3; --gold:#cf9a3a; --gold-ink:#a97d24; --ai:#6d5dd3;
+    --blue-soft:rgba(47,111,179,.10); --gold-soft:rgba(207,154,58,.14);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --surface:#122036; --surface2:#182a41;
+      --ink:#eaf1f8; --ink2:#93a7bd; --ink3:#657b95;
+      --hair:#23364e; --hair2:rgba(255,255,255,.05);
+      --blue:#4d93da; --gold:#e3b45c; --gold-ink:#e3b45c; --ai:#9a8be8;
+      --blue-soft:rgba(77,147,218,.16); --gold-soft:rgba(227,180,92,.16);
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--surface); color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 20px}
+
+  header{border-bottom:1px solid var(--hair); position:sticky; top:0; background:var(--surface); z-index:10}
+  .bar{display:flex; align-items:center; justify-content:space-between; height:64px; gap:16px}
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:800; letter-spacing:-.01em}
+  .mark{width:32px; height:32px; border-radius:9px; display:grid; place-items:center; background:var(--blue-soft); color:var(--blue); font-size:17px; font-weight:700}
+  .nav{display:flex; gap:20px; align-items:center; font-size:14px; color:var(--ink2)}
+  .nav a{text-decoration:none}
+  .btn{display:inline-block; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:700; font-size:14px; border:1px solid var(--hair); color:var(--ink)}
+  .btn.gold{background:var(--gold); border-color:var(--gold); color:#231a06}
+
+  .top{padding:56px 0 34px}
+  .top h1{margin:0; font-size:clamp(26px,4.4vw,40px); letter-spacing:-.025em}
+  .top p{margin:12px 0 0; color:var(--ink2); max-width:62ch}
+
+  .svc{border-top:1px solid var(--hair); padding:44px 0}
+  .svc-head{display:flex; align-items:flex-start; gap:14px; flex-wrap:wrap}
+  .svc-ico{width:44px; height:44px; border-radius:12px; display:grid; place-items:center; font-size:21px; flex:none}
+  .svc-title{flex:1; min-width:240px}
+  .svc-title h2{margin:0; font-size:23px; letter-spacing:-.02em}
+  .svc-title .tl{margin:5px 0 0; color:var(--ink2)}
+  .badges{display:flex; gap:6px; align-items:center; flex-wrap:wrap}
+  .chip{font-size:11px; font-weight:800; padding:4px 10px; border-radius:999px; background:var(--hair2); color:var(--ink3)}
+  .chip.soon{background:var(--gold-soft); color:var(--gold-ink)}
+  .desc{margin:16px 0 0; color:var(--ink2); max-width:74ch}
+
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px}
+  @media (max-width:820px){ .steps{grid-template-columns:1fr} }
+  .steps div{border:1px solid var(--hair); border-radius:11px; padding:15px 17px; background:var(--surface2)}
+  .steps b{display:block; font-size:14.5px; margin-bottom:3px}
+  .steps span{color:var(--ink2); font-size:13.5px}
+
+  .marks{display:flex; gap:7px; flex-wrap:wrap; margin-top:16px}
+  .mk{font-size:12px; font-weight:700; padding:5px 11px; border-radius:8px; border:1px solid var(--hair); color:var(--ink2)}
+  .go{display:inline-block; margin-top:20px; font-weight:800; font-size:14px; text-decoration:none; color:var(--gold-ink)}
+
+  footer{border-top:1px solid var(--hair); padding:34px 0 54px; color:var(--ink3); font-size:13.5px}
+  footer a{color:var(--ink2)}
+  .foot{display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="./index.html"><span class="mark">門</span>야누스</a>
+    <nav class="nav">
+      <a href="./index.html">홈</a>
+      <a class="btn" href="https://demo.ianuspath.com/login">로그인</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="top">
+    <h1>서비스</h1>
+    <p>진단 2종, 실행 5종. 각 서비스는 앞 단계의 결과를 입력으로 받습니다 — 진단 없이 처방하지 않고, 처방 없이 실행하지 않습니다.</p>
+  </div>
+
+  <section class="svc" id="diagnosis">
+    <div class="svc-head">
+      <div class="svc-ico" style="background:rgba(47,111,179,.10); color:#2f6fb3">◱</div>
+      <div class="svc-title">
+        <h2>배치표·수준진단</h2>
+        <p class="tl">지금 위치를 실측 데이터로</p>
+      </div>
+      <div class="badges"><span class="chip">진단</span></div>
+    </div>
+    <p class="desc">성적표 사진 한 장(OCR) 또는 직접 입력으로 시작합니다. 안정·적정·소신·상향 4구간 배치표와 과목별 격차 리포트가 즉시 열립니다.</p>
+    <div class="steps">
+      <div><b>성적 입력</b><span>사진 OCR 또는 표점·백분위·등급 직접 입력</span></div>
+      <div><b>4구간 배치</b><span>실측 70%컷·다년 추세·변동성·신뢰도 등급 기반</span></div>
+      <div><b>격차 리포트</b><span>목표까지 부족분과 다음 행동을 근거와 함께</span></div>
+    </div>
+    <div class="marks"><span class="mk">실측 70%컷</span><span class="mk">3개년 추세</span><span class="mk">신뢰도 등급</span></div>
+    <a class="go" href="https://demo.ianuspath.com/placement">예시로 둘러보기 →</a>
+  </section>
+
+  <section class="svc" id="curriculum">
+    <div class="svc-head">
+      <div class="svc-ico" style="background:rgba(207,154,58,.14); color:#a97d24">◈</div>
+      <div class="svc-title">
+        <h2>커리큘럼 처방</h2>
+        <p class="tl">격차가 곧 커리큘럼이 됩니다</p>
+      </div>
+      <div class="badges"><span class="chip">처방</span></div>
+    </div>
+    <p class="desc">진단 결과가 모든 처방의 입력입니다. 격차가 큰 과목부터 커리큘럼 카드로 배열되고, 각 카드는 다음 문(질문·상담·과외·강의)으로 이어집니다.</p>
+    <div class="steps">
+      <div><b>격차 분석</b><span>진단 결과에서 과목·단원별 부족분 추출</span></div>
+      <div><b>카드 배열</b><span>우선순위 커리큘럼 카드 자동 구성</span></div>
+      <div><b>다음 문 연결</b><span>카드마다 실행 서비스로 이어지는 경로 하나</span></div>
+    </div>
+    <div class="marks"><span class="mk">진단 연동</span><span class="mk">AI 투명성 라벨</span></div>
+    <a class="go" href="https://demo.ianuspath.com/placement">진단부터 시작 →</a>
+  </section>
+
+  <section class="svc" id="qna">
+    <div class="svc-head">
+      <div class="svc-ico" style="background:rgba(109,93,211,.12); color:#6d5dd3">✦</div>
+      <div class="svc-title">
+        <h2>질문·답변 (Q&amp;A)</h2>
+        <p class="tl">사진 한 장이면 AI 초안 즉시</p>
+      </div>
+      <div class="badges"><span class="chip">실행</span></div>
+    </div>
+    <p class="desc">모르는 문제를 사진으로 올리면 AI 초안이 즉시 달리고, 이어서 선생님이 검토해 답합니다. 모든 답변에는 AI 투명성 라벨(✦ 초안 / ✦✎ 보완 / ✓ 선생님)이 붙습니다.</p>
+    <div class="steps">
+      <div><b>사진 업로드</b><span>문제 사진 또는 텍스트 질문</span></div>
+      <div><b>✦ AI 초안</b><span>즉시 풀이 초안 제공</span></div>
+      <div><b>✓ 선생님 검토</b><span>검수 큐를 거친 최종 답변 게시</span></div>
+    </div>
+    <div class="marks"><span class="mk">AI 투명성 라벨</span><span class="mk">선생님 검수</span></div>
+    <a class="go" href="https://demo.ianuspath.com/student/qna">질문 올리기 →</a>
+  </section>
+
+  <section class="svc" id="consulting">
+    <div class="svc-head">
+      <div class="svc-ico" style="background:rgba(207,154,58,.14); color:#a97d24">◇</div>
+      <div class="svc-title">
+        <h2>상담·컨설팅</h2>
+        <p class="tl">진단 근거 위에서 하는 전략 상담</p>
+      </div>
+      <div class="badges"><span class="chip">실행</span></div>
+    </div>
+    <p class="desc">배치표·격차 리포트를 근거로 1:1 입시 전략 상담을 진행합니다. 지원선 설계, 전형 선택, 시기별 우선순위를 데이터와 함께 정리합니다.</p>
+    <div class="steps">
+      <div><b>신청</b><span>목표·현재 상황 입력</span></div>
+      <div><b>배정</b><span>응답시간·전문 분야 기반 컨설턴트 매칭</span></div>
+      <div><b>상담·기록</b><span>상담 노트와 다음 행동이 계정에 남음</span></div>
+    </div>
+    <div class="marks"><span class="mk">상담 기록 보존</span><span class="mk">화상·화이트보드</span></div>
+    <a class="go" href="https://demo.ianuspath.com/consulting/apply">상담 신청하기 →</a>
+  </section>
+
+  <section class="svc" id="tutoring">
+    <div class="svc-head">
+      <div class="svc-ico" style="background:rgba(47,111,179,.10); color:#2f6fb3">◉</div>
+      <div class="svc-title">
+        <h2>1:1 과외</h2>
+        <p class="tl">내 격차에 맞는 선생님 매칭</p>
+      </div>
+      <div class="badges"><span class="chip">실행</span></div>
+    </div>
+    <p class="desc">격차 리포트 기반으로 과목·단원에 맞는 선생님을 찾고, 예약부터 화상 수업·자료·기록까지 한곳에서 진행합니다.</p>
+    <div class="steps">
+      <div><b>선생님 찾기</b><span>응답시간·전문 과목으로 선택</span></div>
+      <div><b>예약·수업</b><span>일정 예약 → 실시간 화상 룸 수업</span></div>
+      <div><b>기록·환류</b><span>수업 기록이 다음 진단의 입력으로</span></div>
+    </div>
+    <div class="marks"><span class="mk">1:1 매칭</span><span class="mk">실시간 룸</span></div>
+    <a class="go" href="https://demo.ianuspath.com/student/search">선생님 둘러보기 →</a>
+  </section>
+
+  <section class="svc" id="clinic">
+    <div class="svc-head">
+      <div class="svc-ico" style="background:rgba(194,104,138,.14); color:#c2688a">✚</div>
+      <div class="svc-title">
+        <h2>클리닉</h2>
+        <p class="tl">약점 단원 단기 집중 보완</p>
+      </div>
+      <div class="badges"><span class="chip">실행</span><span class="chip soon">준비 중</span></div>
+    </div>
+    <p class="desc">격차가 확인된 단원을 소수 정원으로 짧고 집중력 있게 보완합니다. 정원·개설 일정은 시즌별로 공지됩니다.</p>
+    <div class="steps">
+      <div><b>약점 확인</b><span>진단·격차 리포트에서 대상 단원 선정</span></div>
+      <div><b>클리닉 참여</b><span>소수 정원 단기 집중 과정</span></div>
+      <div><b>재진단</b><span>보완 후 재진단으로 이행 확인</span></div>
+    </div>
+    <div class="marks"><span class="mk">소수 정원</span><span class="mk">진단 연동</span></div>
+    <a class="go" href="https://demo.ianuspath.com/signup">개설 알림 받기 →</a>
+  </section>
+
+  <section class="svc" id="lecture">
+    <div class="svc-head">
+      <div class="svc-ico" style="background:rgba(47,111,179,.10); color:#2f6fb3">▶</div>
+      <div class="svc-title">
+        <h2>강의 (VOD)</h2>
+        <p class="tl">커리큘럼 카드에서 바로 이어지는 강의</p>
+      </div>
+      <div class="badges"><span class="chip">실행</span><span class="chip soon">준비 중</span></div>
+    </div>
+    <p class="desc">처방된 커리큘럼 카드에서 필요한 강의로 바로 이어집니다. 수강 기록은 플래너·대시보드 지표로 환류됩니다.</p>
+    <div class="steps">
+      <div><b>카드에서 진입</b><span>커리큘럼 카드의 강의 경로로 이동</span></div>
+      <div><b>수강</b><span>VOD 플레이어 — 배속·이어보기</span></div>
+      <div><b>지표 환류</b><span>수강 이행이 대시보드 "지금 위치"에 반영</span></div>
+    </div>
+    <div class="marks"><span class="mk">커리큘럼 연동</span></div>
+    <a class="go" href="https://demo.ianuspath.com/signup">시작하기 →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 야누스 — 미래를 여는 문</div>
+    <div>
+      <a href="mailto:support@ianuspath.com">support@ianuspath.com</a> ·
+      <a href="https://demo.ianuspath.com/privacy">개인정보처리방침</a> ·
+      <a href="https://demo.ianuspath.com/terms">이용약관</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

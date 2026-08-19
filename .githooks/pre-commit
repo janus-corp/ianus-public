@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# 공개 발행 가드 — 커밋 전에 돈다. 여기서 막지 못하면 push 후엔 되돌릴 수 없다.
+exec bash "$(git rev-parse --show-toplevel)/scripts/check-public-safe.sh"
