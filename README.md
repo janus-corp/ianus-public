@@ -1,4 +1,4 @@
-# janus-public
+# ianus-public
 
 야누스의 **공개 발행 표면**. Cloudflare Pages 가 이 저장소의 `public/` 을 읽어 서빙한다.
 
@@ -8,12 +8,12 @@
 
 ## 이 저장소의 성격 — 콘텐츠의 출처가 아니다
 
-정본은 전부 `janus-platform`(private)에 있다. 여기는 그 **사본을 놓는 자리**다.
+정본은 전부 `ianus-platform`(private)에 있다. 여기는 그 **사본을 놓는 자리**다.
 
 | | 정본 | 여기 |
 |---|---|---|
 | 마케팅 랜딩·서비스 소개 | `janus-platform/marketing/src` | `public/*.html` (생성물 사본) |
-| 무료 배치표 | `janus-platform` 티어 빌드(`dist-tier/free`) | `public/baechi/` |
+| 무료 배치표 | `ianus-platform` 티어 빌드(`dist-tier/free`) | `public/baechi/` |
 
 **여기서 직접 고치지 않는다.** 고치면 두 벌이 되고, 두 벌이 되면 어느 쪽이 맞는지 아무도 모르게 된다.
 반입은 스크립트로만:
