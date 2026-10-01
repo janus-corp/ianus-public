@@ -2,7 +2,7 @@
 # 플랫폼 산출물 → 이 저장소로 반입.
 #
 # **이 저장소는 콘텐츠의 출처가 아니라 발행 표면이다.** 마케팅 카피도, 무료 배치표도
-# 정본은 janus-platform 에 있고(O184: "정본은 웹앱, 정적은 공개용 사본"), 여기는 그 사본을
+# 정본은 ianus-platform 에 있고(O184: "정본은 웹앱, 정적은 공개용 사본"), 여기는 그 사본을
 # Cloudflare Pages 가 읽어갈 수 있는 곳에 놓는 역할만 한다. 여기서 직접 고치면 두 벌이 되고,
 # 두 벌이 되면 어느 쪽이 맞는지 아무도 모르게 된다.
 #
@@ -22,7 +22,7 @@ while [ $# -gt 0 ]; do
     *) echo "알 수 없는 인자: $1" >&2; exit 2;;
   esac
 done
-[ -n "$PLATFORM" ] || { echo "--platform <janus-platform 경로> 가 필요하다" >&2; exit 2; }
+[ -n "$PLATFORM" ] || { echo "--platform <ianus-platform 경로> 가 필요하다" >&2; exit 2; }
 [ -d "$PLATFORM" ] || { echo "플랫폼 경로가 없다: $PLATFORM" >&2; exit 2; }
 
 echo "· 플랫폼: $PLATFORM"
@@ -45,8 +45,8 @@ else
     cat >&2 <<'MSG'
 · 무료판 산출물이 없다. 플랫폼에서 먼저 빌드해야 한다:
 
-    JANUS_ALLOWED_HOSTS="ianuspath.com,www.ianuspath.com,*.ianuspath.pages.dev" \
-    JANUS_CANONICAL_ORIGIN="https://ianuspath.com" \
+    IANUS_ALLOWED_HOSTS="ianuspath.com,www.ianuspath.com,*.ianuspath.pages.dev" \
+    IANUS_CANONICAL_ORIGIN="https://ianuspath.com" \
       python3 ops/placement/tier_build.py --src <마스터.html> --tier free
     python3 ops/placement/tier_verify.py dist-tier/free --tier free   # 비-0 이면 반입 금지
 

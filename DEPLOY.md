@@ -43,8 +43,8 @@
 ## 무료판 빌드 ENV — 와일드카드를 빼지 말 것
 
 ```bash
-JANUS_ALLOWED_HOSTS="ianuspath.com,www.ianuspath.com,*.ianuspath.pages.dev" \
-JANUS_CANONICAL_ORIGIN="https://ianuspath.com" \
+IANUS_ALLOWED_HOSTS="ianuspath.com,www.ianuspath.com,*.ianuspath.pages.dev" \
+IANUS_CANONICAL_ORIGIN="https://ianuspath.com" \
   python3 ops/placement/tier_build.py --src <마스터.html> --tier free
 python3 ops/placement/tier_verify.py dist-tier/free --tier free   # 비-0 이면 배포 금지
 ```
